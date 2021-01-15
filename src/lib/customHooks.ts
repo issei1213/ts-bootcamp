@@ -1,19 +1,27 @@
 import { ChangeEvent, Dispatch, SetStateAction, useCallback } from "react";
 
 type UseChangeEvent<T> = {
-  (update: Dispatch<SetStateAction<any>>): (evnet: ChangeEvent<HTMLInputElement>) => void
-}
+  (update: Dispatch<SetStateAction<T>>): (
+    evnet: ChangeEvent<HTMLInputElement>
+  ) => void;
+};
 
 export const useStringChangeEvent: UseChangeEvent<string> = (update) => {
-  return useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    update(event.target.value)
-  }, [update])
-}
+  return useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      update(event.target.value);
+    },
+    [update]
+  );
+};
 
 export const useNumberChangeEvent: UseChangeEvent<number> = (update) => {
-  return useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    if (/^[0-9]+$/.test(event.target.value)){
-      update(Number(event.target.value))
-    }
-  }, [update])
-}
+  return useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (/^[0-9]+$/.test(event.target.value)) {
+        update(Number(event.target.value));
+      }
+    },
+    [update]
+  );
+};

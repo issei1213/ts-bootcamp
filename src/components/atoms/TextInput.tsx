@@ -13,7 +13,7 @@ const TextInput: FC<Props> = React.memo((props) => {
   return (
     <input
       className={styles.form__text}
-      onChange={(e) => onChange(e)}
+      onChange={onChange}
       value={value}
       type={type}
     />
